@@ -21,8 +21,8 @@ export default function HeroSection() {
     })
   
     const LayerOneY = useTransform(scrollYProgress, [0, 1], ["0vh", "400vh"])
-    const LayerThreeY = useTransform(scrollYProgress, [0, 1], ["0vh", "360vh"])
-     const LayerTwoY = useTransform(scrollYProgress, [0, 1], ["0vh", "300vh"])
+    const LayerTwoY = useTransform(scrollYProgress, [0, 1], ["0vh", "350vh"])
+     const LayerThreeY = useTransform(scrollYProgress, [0, 1], ["0vh", "300vh"])
      const LayerFourY = useTransform(scrollYProgress, [0, 1], ["0vh", "250vh"])
      const LayerFiveY = useTransform(scrollYProgress, [0, 1], ["0vh", "100vh"])
      
