@@ -1,16 +1,18 @@
 import React from 'react'
 import Image from 'next/image';
-// import LayerTwo from '../../public/images/2ndHills.png';
-// import LayerFour from '../../public/images/Hillswithoutnsky.png';
-// import LayerThree from '../../public/images/3rdLayerThree.png';
-// import LayerFive from '../../public/images/LayerFiveonHills.png';
+// import { Inter } from 'next/font/google'; 
+// import { Montserrat } from 'next/font/google';
+
+
 import LayerOne from '../../public/images/layer (1).png';
 import LayerTwo from '../../public/images/layer (2).png';
 import LayerThree from '../../public/images/layer (3).png';
 import LayerFour from '../../public/images/layer (4).png';
 import LayerFive from '../../public/images/layer (5).png';
+
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useRef } from 'react';
+
 
 
 export default function HeroSection() {
@@ -20,19 +22,24 @@ export default function HeroSection() {
       offset: ['start start', 'end start']
     })
   
-    const LayerOneY = useTransform(scrollYProgress, [0, 1], ["0vh", "400vh"])
+    const LayerOneY = useTransform(scrollYProgress, [0, 1], ["0vh", "380vh"])
     const LayerTwoY = useTransform(scrollYProgress, [0, 1], ["0vh", "350vh"])
-     const LayerThreeY = useTransform(scrollYProgress, [0, 1], ["0vh", "300vh"])
-     const LayerFourY = useTransform(scrollYProgress, [0, 1], ["0vh", "250vh"])
-     const LayerFiveY = useTransform(scrollYProgress, [0, 1], ["0vh", "100vh"])
+     const LayerThreeY = useTransform(scrollYProgress, [0, 1], ["0vh", "250vh"])
+     const LayerFourY = useTransform(scrollYProgress, [0, 1], ["0vh", "200vh"])
+     const LayerFiveY = useTransform(scrollYProgress, [0, 1], ["0vh", "150vh"])
      
     return (
     
-        <div  className='h-screen overflow-hidden relative'>
+        <div  className='h-screen overflow-hidden relative p-20 flex '>
           <motion.div  style={{y: LayerFiveY}} className="absolute top-0 left-0 w-full h-full z-50">
           <Image  src={LayerFive} fill alt="image" style={{objectFit: "cover"}}/>
         </motion.div>
-      
+        <div className="absolute z-[60] top-40 w-[55%] left-20">
+                <p className="text-xl text-accentblue">Hi I'm</p>
+                <h1 className="text-8xl font-bold text-darkblue">Rahul Akubattini</h1>
+                <p className="text-xl text-accentblue w-[80%]">A Full Stack Developer based in Hyderabad India, specializing in developing scalable and high-performance web and mobile applications. </p>
+            </div>
+                 
           <motion.div style={{y: LayerFourY}} className="absolute top-0 left-0 w-full h-full z-40">
           <Image src={LayerFour} fill alt="image" style={{objectFit: "cover"}}/>
         </motion.div>

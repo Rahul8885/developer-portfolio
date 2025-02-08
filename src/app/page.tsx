@@ -3,7 +3,15 @@ import { useEffect } from 'react';
 import Lenis from 'lenis'
 import HeroSection from '@/components/HeroSection';
 import Description from '@/components/Description';
-
+import localFont from 'next/font/local';
+const NeueMontreal = localFont({
+  src: [
+    { path: "../../public/fonts/NeueMontreal-Regular.otf", weight: "400", style: "normal" },
+    { path: "../../public/fonts/NeueMontreal-Medium.otf", weight: "500", style: "normal" },
+    { path: "../../public/fonts/NeueMontreal-Bold.otf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-neue-montreal",
+});
 export default function Home() {
 
   useEffect( () => {
@@ -18,7 +26,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main>
+    <main className={NeueMontreal.variable}>
       <HeroSection />
       <Description />
       {/* <Section /> */}
