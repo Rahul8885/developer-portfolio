@@ -23,9 +23,10 @@ export default function HeroSection() {
     })
   
     const LayerOneY = useTransform(scrollYProgress, [0, 1], ["0vh", "380vh"])
-    const LayerTwoY = useTransform(scrollYProgress, [0, 1], ["0vh", "350vh"])
-     const LayerThreeY = useTransform(scrollYProgress, [0, 1], ["0vh", "250vh"])
-     const LayerFourY = useTransform(scrollYProgress, [0, 1], ["0vh", "200vh"])
+    const LayerTwoY = useTransform(scrollYProgress, [0, 1], ["0vh", "280vh"])
+    const LayerText = useTransform(scrollYProgress, [0, 1], ["0vh", "250vh"])
+     const LayerThreeY = useTransform(scrollYProgress, [0, 1], ["0vh", "220vh"])
+     const LayerFourY = useTransform(scrollYProgress, [0, 1], ["0vh", "185vh"])
      const LayerFiveY = useTransform(scrollYProgress, [0, 1], ["0vh", "150vh"])
      
     return (
@@ -34,11 +35,11 @@ export default function HeroSection() {
           <motion.div  style={{y: LayerFiveY}} className="absolute top-0 left-0 w-full h-full z-50">
           <Image  src={LayerFive} fill alt="image" style={{objectFit: "cover"}}/>
         </motion.div>
-        <div className="absolute z-[60] top-40 w-[55%] left-20">
-                <p className="text-xl text-accentblue">Hi I'm</p>
-                <h1 className="text-8xl font-bold text-darkblue">Rahul Akubattini</h1>
-                <p className="text-xl text-accentblue w-[80%]">A Full Stack Developer based in Hyderabad India, specializing in developing scalable and high-performance web and mobile applications. </p>
-            </div>
+        <motion.div style={{y: LayerText}} className="absolute space-y-1 z-[30] top-36 w-[55%] left-20">
+                <p className="text-xl font-neue font-regular text-accentblue">Hi I'm</p>
+                <h1 className="text-8xl font-neue font-bold text-darkblue">Rahul Akubattini</h1>
+                <p className="text-xl font-neue font-regular text-accentblue w-[80%]">A <span className='font-medium font-neue text-darkblue'>Full Stack Developer</span> based in Hyderabad India, specializing in developing scalable and high-performance web and mobile applications. </p>
+            </motion.div>
                  
           <motion.div style={{y: LayerFourY}} className="absolute top-0 left-0 w-full h-full z-40">
           <Image src={LayerFour} fill alt="image" style={{objectFit: "cover"}}/>
