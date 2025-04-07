@@ -45,6 +45,7 @@ export default {
 			accentblue: "#58637d",
 			lightbrown: "#e1b7aa",
 		    tertiary: "#856f7c",
+			yellow: "#fdf8e0",
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',

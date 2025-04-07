@@ -4,6 +4,7 @@ import Lenis from 'lenis'
 import HeroSection from '@/components/HeroSection';
 import Description from '@/components/Description';
 import localFont from 'next/font/local';
+import About from '@/components/About';
 const NeueMontreal = localFont({
   src: [
     { path: "../../public/fonts/NeueMontreal-Regular.otf", weight: "400", style: "normal" },
@@ -28,7 +29,8 @@ export default function Home() {
   return (
     <main className={NeueMontreal.variable}>
       <HeroSection />
-      <Description />
+      {/* <Description /> */}
+      <About />
       {/* <Section /> */}
       <div className='h-screen'></div>
       <div className='h-screen'></div>
