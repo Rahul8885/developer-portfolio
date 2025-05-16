@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis'
 import HeroSection from '@/components/HeroSection';
-import Description from '@/components/Description';
+// import Description from '@/components/Description';
 import localFont from 'next/font/local';
 import About from '@/components/About';
 const NeueMontreal = localFont({

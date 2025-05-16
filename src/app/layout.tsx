@@ -1,11 +1,12 @@
-import Header from "@/components/header";
+
 import "./globals.css";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import ActiveSectionContextProvider from "@/context/active-section-context";
+import Header from "@/components/Header";
 
 
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Rahul Akubattini | Personal Portfolio",

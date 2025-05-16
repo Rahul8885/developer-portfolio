@@ -36,7 +36,7 @@ export default function HeroSection() {
           <Image  src={LayerFive} fill alt="image" style={{objectFit: "cover"}}/>
         </motion.div>
         <motion.div style={{y: LayerText}} className="absolute space-y-1 z-[30] top-36 w-[55%] left-20">
-                <p className="text-xl font-neue font-regular text-accentblue">Hi I'm</p>
+                <p className="text-xl font-neue font-regular text-accentblue">Hi I&apos;m</p>
                 <h1 className="text-8xl font-neue font-bold text-darkblue">Rahul Akubattini</h1>
                 <p className="text-xl font-neue font-regular text-accentblue w-[80%]">A <span className='font-medium font-neue text-darkblue'>Full Stack Developer</span> based in Hyderabad India, specializing in developing scalable and high-performance web and mobile applications. </p>
             </motion.div>

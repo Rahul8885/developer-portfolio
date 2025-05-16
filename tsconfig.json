@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/HeroSection.tsx", "src/components/HeroSection.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/HeroSection.tsx", "src/components/HeroSection.tsx", "src/Lanyard/lanyard.jsx", "src/Lanyard/lanyard.jsx"],
   "exclude": ["node_modules"]
 }
