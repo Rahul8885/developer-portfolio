@@ -12,12 +12,12 @@ import * as THREE from "three";
 
 
 declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      meshLineGeometry: any
-      meshLineMaterial: any
-    }
-  }
+  // namespace JSX {
+  //   interface IntrinsicElements {
+  //     meshLineGeometry: any
+  //     meshLineMaterial: any
+  //   }
+  // }
 }
 
 // Extend Three.js with MeshLine for the lanyard band
