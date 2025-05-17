@@ -5,6 +5,7 @@ import HeroSection from '@/components/HeroSection';
 // import Description from '@/components/Description';
 import localFont from 'next/font/local';
 import About from '@/components/About';
+import Projects from '@/components/Projects';
 const NeueMontreal = localFont({
   src: [
     { path: "../../public/fonts/NeueMontreal-Regular.otf", weight: "400", style: "normal" },
@@ -31,6 +32,7 @@ export default function Home() {
       <HeroSection />
       {/* <Description /> */}
       <About />
+      <Projects />
       {/* <Section /> */}
       <div className='h-screen'></div>
       <div className='h-screen'></div>
