@@ -6,18 +6,15 @@ import { Canvas, extend, useFrame, useThree } from "@react-three/fiber";
 import { BallCollider, CuboidCollider, Physics, RigidBody, RigidBodyProps, RigidBodyTypeString, useRopeJoint, useSphericalJoint } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import * as THREE from "three";
+import type { RapierRigidBody } from "@react-three/rapier"
 
 
 
-
-
-declare global {
-  // namespace JSX {
-  //   interface IntrinsicElements {
-  //     meshLineGeometry: any
-  //     meshLineMaterial: any
-  //   }
-  // }
+declare module "react" {
+  interface IntrinsicElements {
+    meshLineGeometry: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+    meshLineMaterial: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  }
 }
 
 // Extend Three.js with MeshLine for the lanyard band
@@ -117,12 +114,13 @@ interface BandProps {
 }
 
 function Band({ cardModel, bandTexture, maxSpeed, minSpeed }: BandProps) {
-  const band = useRef<any>()
-  const fixed = useRef<any>()
-  const j1 = useRef<any>()
-  const j2 = useRef<any>()
-  const j3 = useRef<any>()
-  const card = useRef<any>()
+  const band = useRef<THREE.Mesh>(null)
+
+  const fixed = useRef<RapierRigidBody>(null) as React.RefObject<RapierRigidBody>
+  const j1 = useRef<RapierRigidBody>(null) as React.RefObject<RapierRigidBody>
+  const j2 = useRef<RapierRigidBody>(null) as React.RefObject<RapierRigidBody>
+  const j3 = useRef<RapierRigidBody>(null) as React.RefObject<RapierRigidBody>
+  const card = useRef<RapierRigidBody>(null) as React.RefObject<RapierRigidBody>
 
   const vec = new THREE.Vector3()
   const ang = new THREE.Vector3()
@@ -180,89 +178,91 @@ function Band({ cardModel, bandTexture, maxSpeed, minSpeed }: BandProps) {
     }
   }, [hovered, dragged])
 
-  useFrame((state, delta) => {
-    // Skip frame updates until all refs are initialized
-    if (
-      !fixed.current ||
-      !j1.current ||
-      !j2.current ||
-      !j3.current ||
-      !card.current ||
-      !band.current
-    ) {
-      return
-    }
-
-    if (dragged) {
-      vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera)
-      dir.copy(vec).sub(state.camera.position).normalize()
-      vec.add(dir.multiplyScalar(state.camera.position.length()))
-
-      // Wake up physics bodies
-      if (card.current?.wakeUp) card.current.wakeUp()
-      if (j1.current?.wakeUp) j1.current.wakeUp()
-      if (j2.current?.wakeUp) j2.current.wakeUp()
-      if (j3.current?.wakeUp) j3.current.wakeUp()
-      if (fixed.current?.wakeUp) fixed.current.wakeUp()
-
-      // Set card position
-      if (card.current?.setNextKinematicTranslation) {
-        card.current.setNextKinematicTranslation({
-          x: vec.x - dragged.x,
-          y: vec.y - dragged.y,
-          z: vec.z - dragged.z,
-        })
+  // WeakMap to store lerped vectors for each RigidBody
+  const lerpedMap = new WeakMap<object, THREE.Vector3>()
+  
+    useFrame((state, delta) => {
+      // Skip frame updates until all refs are initialized
+      if (
+        !fixed.current ||
+        !j1.current ||
+        !j2.current ||
+        !j3.current ||
+        !card.current ||
+        !band.current
+      ) {
+        return
       }
-    }
-
-    // Update physics and curve
-    if (
-      fixed.current &&
-      j1.current &&
-      j2.current &&
-      j3.current &&
-      card.current
-    ) {
-      // Fix most of the jitter when over pulling the card
-      ;[j1, j2].forEach((ref) => {
-        if (!ref.current.lerped && ref.current.translation) {
-          ref.current.lerped = new THREE.Vector3().copy(
-            ref.current.translation()
-          )
+  
+      if (dragged) {
+        vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera)
+        dir.copy(vec).sub(state.camera.position).normalize()
+        vec.add(dir.multiplyScalar(state.camera.position.length()))
+  
+        // Wake up physics bodies
+        if (card.current?.wakeUp) card.current.wakeUp()
+        if (j1.current?.wakeUp) j1.current.wakeUp()
+        if (j2.current?.wakeUp) j2.current.wakeUp()
+        if (j3.current?.wakeUp) j3.current.wakeUp()
+        if (fixed.current?.wakeUp) fixed.current.wakeUp()
+  
+        // Set card position
+        if (card.current?.setNextKinematicTranslation) {
+          card.current.setNextKinematicTranslation({
+            x: vec.x - dragged.x,
+            y: vec.y - dragged.y,
+            z: vec.z - dragged.z,
+          })
         }
-
-        if (ref.current.lerped && ref.current.translation) {
-          const translation = ref.current.translation()
-          if (
-            translation &&
-            !isNaN(translation.x) &&
-            !isNaN(translation.y) &&
-            !isNaN(translation.z)
-          ) {
-            const clampedDistance = Math.max(
-              0.1,
-              Math.min(1, ref.current.lerped.distanceTo(translation))
-            )
-            ref.current.lerped.lerp(
-              translation,
-              delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
-            )
+      }
+  
+      // Update physics and curve
+      if (
+        fixed.current &&
+        j1.current &&
+        j2.current &&
+        j3.current &&
+        card.current
+      ) {
+        // Fix most of the jitter when over pulling the card
+        ;[j1, j2].forEach((ref) => {
+          if (ref.current && ref.current.translation) {
+            let lerped = lerpedMap.get(ref.current)
+            if (!lerped) {
+              lerped = new THREE.Vector3().copy(ref.current.translation())
+              lerpedMap.set(ref.current, lerped)
+            }
+            const translation = ref.current.translation()
+            if (
+              translation &&
+              !isNaN(translation.x) &&
+              !isNaN(translation.y) &&
+              !isNaN(translation.z)
+            ) {
+              const clampedDistance = Math.max(
+                0.1,
+                Math.min(1, lerped.distanceTo(translation))
+              )
+              lerped.lerp(
+                translation,
+                delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
+              )
+            }
           }
-        }
-      })
-
-      // Calculate catmull curve if all points are valid
-      curve.points[0].copy(j3.current.translation())
-      curve.points[1].copy(j2.current.lerped)
-      curve.points[2].copy(j1.current.lerped)
-      curve.points[3].copy(fixed.current.translation())
-      band.current.geometry.setPoints(curve.getPoints(32))
-      // Tilt it back towards the screen
-      ang.copy(card.current.angvel())
-      rot.copy(card.current.rotation())
-      card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z })
-    }
-  })
+        })
+  
+        // Calculate catmull curve if all points are valid
+        curve.points[0].copy(j3.current.translation())
+        curve.points[1].copy(lerpedMap.get(j2.current)!)
+        curve.points[2].copy(lerpedMap.get(j1.current)!)
+        curve.points[3].copy(fixed.current.translation())
+        band.current.geometry.setPoints(curve.getPoints(32))
+        // Tilt it back towards the screen
+        ang.copy(card.current.angvel())
+        rot.copy(card.current.rotation())
+        card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z })
+      }
+    })
   curve.curveType = "chordal"
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping
 
