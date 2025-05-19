@@ -7,7 +7,7 @@ const Projects = () => {
     const ProjectCardContentBlack = [
   {
     title: "1800 Spirits",
-    description: "Contributed to the development of a US-based marketplace .....",
+    description: "Contributed to the development of a US-based marketplace for alcoholic beverages, focusing on frontend and backend services.",
     technologies: ['React', 'AWS', 'TypeScript', 'Node.js', 'Chakra UI'],
     techColors: ['#818CF8', '#38B2AC', '#3178C6', '#8CC84B', '#FBBF24'],
     imageUrl: "https://images.unsplash.com/photo-1717954681473-2b3c638fbd19?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

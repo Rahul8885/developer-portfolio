@@ -17,14 +17,14 @@ interface ProjectCardProps {
   ProjectCardContent: ProjectCard[];
 }
 
-const ProjectCardBlack = ({ ProjectCardContent }: ProjectCardProps) => {
+const ProjectCardBlackExpanded = ({ ProjectCardContent }: ProjectCardProps) => {
   return (
     <div className='flex justify-center items-center py-10'>
       {ProjectCardContent.map((project, index) => (
         <div key={index} className="bg-black bg-opacity-30 border border-zinc-500 w-[350px] shadow-lg rounded-xl overflow-hidden backdrop-filter backdrop-blur-lg">
           <div>
             <div className="relative h-60 overflow-hidden rounded-t-xl">
-      
+       
                 <span className="block h-full w-full">
                   <Image
                     src={project.imageUrl}
@@ -34,7 +34,7 @@ const ProjectCardBlack = ({ ProjectCardContent }: ProjectCardProps) => {
                     className="rounded-t-xl"
                   />
                 </span>
-           
+    
             </div>
 
             <div className="p-4">
@@ -58,9 +58,9 @@ const ProjectCardBlack = ({ ProjectCardContent }: ProjectCardProps) => {
                   </div>
                 ))}
               </div>
-              {/* <div className="mt-3 text-ellipsis overflow-hidden whitespace-nowrap">
-                <p className="text-zinc-400 mb-3 truncate">{project.description}</p>
-              </div> */}
+              <div className="mt-3">
+                <p className="text-zinc-400 mb-3">{project.description}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -69,4 +69,4 @@ const ProjectCardBlack = ({ ProjectCardContent }: ProjectCardProps) => {
   );
 };
 
-export default ProjectCardBlack;
+export default ProjectCardBlackExpanded;
