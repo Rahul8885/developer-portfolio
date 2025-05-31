@@ -1,13 +1,14 @@
 'use client';
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { useScroll, useTransform, motion } from 'framer-motion';
+import { useScroll, useTransform, motion } from 'motion/react';
 
 import LayerOne from '../../public/images/layer (1).png';
 import LayerTwo from '../../public/images/layer (2).png';
 import LayerThree from '../../public/images/layer (3).png';
 import LayerFour from '../../public/images/layer (4).png';
 import LayerFive from '../../public/images/layer (5).png';
+import { ContainerTextFlip } from '@/app/components/ui/container-text-flip';
 
 export default function HeroSection() {
   const container = useRef(null);
@@ -40,22 +41,21 @@ export default function HeroSection() {
       {/* Text Content */}
       <motion.div
         style={{ y: LayerText }}
-        className="absolute z-[30] top-24 md:top-36 w-[90%] md:w-[55%] left-4 md:left-20 space-y-3"
+        className="absolute z-[40] top-32 md:top-36 w-[90%] lg:w-[55%] left-4 md:left-20  tracking-tighter leading-[0.9em]"
       >
-        <p className="text-base md:text-xl font-neue text-accentblue">
-          Hi I&apos;m
-        </p>
-        <h1 className="text-4xl md:text-8xl font-neue font-bold text-darkblue leading-tight">
-          Rahul Akubattini
+       
+        <h1 className="lg:text-[72px] md:text-[60px] text-[36px] font-bold leading-[0.9em] tracking-tighter text-accentblue">
+          Hi I'm Rahul Akubattini
         </h1>
-        <p className="text-sm md:text-xl font-neue text-accentblue w-full md:w-[80%]">
-          A{' '}
-          <span className="font-medium text-darkblue">
-            Full Stack Developer
-          </span>{' '}
-          based in Hyderabad, India, specializing in developing scalable and
-          high-performance web and mobile applications.
-        </p>
+       
+        <h1 className="lg:text-[72px] md:text-[60px] text-[36px] font-bold leading-[0.9em] tracking-tighter  text-accentblue">
+          a 
+          <span>
+            <ContainerTextFlip textClassName='lg:text-[72px] md:text-[60px] text-[36px] font-bold leading-[0.9em] tracking-tighter text-darkblue pl-4' words={["Full Stack Developer", "Web Designer", "App Developer", "AWS Developer"]}
+/>
+          </span>
+        </h1>
+        
       </motion.div>
 
       {/* Foreground Layers */}

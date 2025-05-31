@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useAnimation, motion, Variants, Transition } from "framer-motion";
+import { useAnimation, motion, Variants, Transition } from "motion/react";
 import { useInView } from "react-intersection-observer";
 import { IconType } from "react-icons";
 
