@@ -19,10 +19,10 @@ const Projects = () => {
 ]
     return (
         <section
-            className="relative z-10 w-full overflow-hidden bg-[#0E1016] bg-cover bg-center pt-16 pb-36 md:pt-20 md:pb-44 lg:pt-20 lg:pb-56"
+            className="relative z-10 w-full overflow-hidden bg-[#e3e5ea] bg-cover bg-center pt-16 pb-36 md:pt-20 md:pb-44 lg:pt-20 lg:pb-56"
             id="about"
         >
-            <div className="mx-auto flex w-[85%] flex-col   lg:max-w-[1212.8px]">
+            <div className=" flex flex-col place-content-center">
                 <AnimatedTitle
                     text={"My Work"}
                     className={
@@ -36,7 +36,7 @@ const Projects = () => {
                     {/* <ProjectCardBlack
                     ProjectCardContent={ProjectCardContentBlack}
                     /> */}
-                  {projects.map((project: ProjectProps) => (
+                  {/* {projects.map((project: ProjectProps) => (
                     <ProjectCardBlack
                         id={project.id}
                         key={project.id}
@@ -50,7 +50,8 @@ const Projects = () => {
                         image={project.image}
                         available={project.available}
                     />
-                ))}
+                ))} */}
+                <CardCarousel/>
                 </div>
             </div>
             {/* <LanyardCard

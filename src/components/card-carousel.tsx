@@ -4,56 +4,57 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { projects } from "./projectDetails"
 
-const destinations = [
-  {
-    id: 1,
-    title: "NORWEGIAN FJORDS",
-    subtitle: "Discover Nordic beauty",
-    image: "/placeholder.svg?height=600&width=400",
-  },
-  {
-    id: 2,
-    title: "SWISS ALPS",
-    subtitle: "Alpine adventures await",
-    image: "/placeholder.svg?height=600&width=400",
-  },
-  {
-    id: 3,
-    title: "CHAMONIX",
-    subtitle: "FRANCE",
-    description: "Let your dreams come true",
-    image: "/placeholder.svg?height=600&width=400",
-    featured: true,
-  },
-  {
-    id: 4,
-    title: "COASTAL CLIFFS",
-    subtitle: "Ocean meets sky",
-    image: "/placeholder.svg?height=600&width=400",
-  },
-  {
-    id: 5,
-    title: "MOUNTAIN PEAKS",
-    subtitle: "Touch the clouds",
-    image: "/placeholder.svg?height=600&width=400",
-  },
-]
+// const projects = [
+//   {
+//     id: 1,
+//     title: "NORWEGIAN FJORDS",
+//     subtitle: "Discover Nordic beauty",
+//     image: "/placeholder.svg?height=600&width=400",
+//   },
+//   {
+//     id: 2,
+//     title: "SWISS ALPS",
+//     subtitle: "Alpine adventures await",
+//     image: "/placeholder.svg?height=600&width=400",
+//   },
+//   {
+//     id: 3,
+//     title: "CHAMONIX",
+//     subtitle: "FRANCE",
+//     description: "Let your dreams come true",
+//     image: "/placeholder.svg?height=600&width=400",
+//     featured: true,
+//   },
+//   {
+//     id: 4,
+//     title: "COASTAL CLIFFS",
+//     subtitle: "Ocean meets sky",
+//     image: "/placeholder.svg?height=600&width=400",
+//   },
+//   {
+//     id: 5,
+//     title: "MOUNTAIN PEAKS",
+//     subtitle: "Touch the clouds",
+//     image: "/placeholder.svg?height=600&width=400",
+//   },
+// ]
 
 export default function CardCarousel() {
   const [currentIndex, setCurrentIndex] = useState(2) // Start with Chamonix as featured
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % destinations.length)
+    setCurrentIndex((prev) => (prev + 1) % projects.length)
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + destinations.length) % destinations.length)
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length)
   }
 
   const getSlidePosition = (index: number) => {
     const diff = index - currentIndex
-    const totalSlides = destinations.length
+    const totalSlides = projects.length
 
     // Normalize the difference to be between -2 and 2
     let normalizedDiff = diff
@@ -84,10 +85,10 @@ export default function CardCarousel() {
      
 
       {/* Carousel container */}
-      <div className="relative h-full flex items-center justify-center" style={{ perspective: "1000px" }}>
+      <div className="relative h-full flex items-center justify-center">
         <div className="relative w-full max-w-7xl mx-auto px-4">
           {/* Navigation arrows */}
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+          {/* <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             <Button
               variant="ghost"
               size="icon"
@@ -96,8 +97,8 @@ export default function CardCarousel() {
             >
               <ChevronLeft className="w-6 h-6" />
             </Button>
-          </motion.div>
-
+          </motion.div> */}
+{/* 
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             <Button
               variant="ghost"
@@ -107,12 +108,12 @@ export default function CardCarousel() {
             >
               <ChevronRight className="w-6 h-6" />
             </Button>
-          </motion.div>
+          </motion.div> */}
 
           {/* Slides */}
           <div className="relative h-[500px] flex items-center justify-center">
             <AnimatePresence mode="wait">
-              {destinations.map((destination, index) => {
+              {projects.map((project, index) => {
                 const position = getSlidePosition(index)
                 const isCenter = position === 0
                 const isVisible = Math.abs(position) <= 2
@@ -121,7 +122,7 @@ export default function CardCarousel() {
 
                 return (
                   <motion.div
-                    key={destination.id}
+                    key={project.id}
                     className={`absolute cursor-pointer ${isCenter ? "z-10" : "z-0"}`}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={getCardVariants(position)}
@@ -146,7 +147,7 @@ export default function CardCarousel() {
                     }}
                   >
                     <motion.div
-                      className="relative w-80 h-96 rounded-2xl overflow-hidden shadow-2xl"
+                      className="relative w-[60vw] h-[60vh] rounded-2xl overflow-hidden shadow-2xl"
                       whileHover={isCenter ? { y: -10 } : {}}
                       transition={{ duration: 0.3 }}
                     >
@@ -154,7 +155,7 @@ export default function CardCarousel() {
                       <div
                         className="absolute inset-0 bg-cover bg-center transition-transform duration-700"
                         style={{
-                          backgroundImage: `url(${destination.image})`,
+                          backgroundImage: `url(${project.image})`,
                         }}
                       />
 
@@ -177,9 +178,9 @@ export default function CardCarousel() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.3 }}
                               >
-                                <h1 className="text-4xl font-bold tracking-wider mb-2">{destination.title}</h1>
-                                {destination.subtitle && (
-                                  <h2 className="text-4xl font-bold tracking-wider">{destination.subtitle}</h2>
+                                <h1 className="text-4xl font-bold tracking-wider mb-2">{project.title}</h1>
+                                {project.subtitle && (
+                                  <h2 className="text-4xl font-bold tracking-wider">{project.subtitle}</h2>
                                 )}
                               </motion.div>
 
@@ -191,14 +192,14 @@ export default function CardCarousel() {
                                 transition={{ duration: 0.8, delay: 0.5 }}
                               />
 
-                              {destination.description && (
+                              {project.description && (
                                 <motion.p
                                   className="text-lg text-white/90 font-light tracking-wide"
                                   initial={{ opacity: 0, y: 20 }}
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ duration: 0.6, delay: 0.6 }}
                                 >
-                                  {destination.description}
+                                  {project.description}
                                 </motion.p>
                               )}
                             </div>
@@ -221,7 +222,7 @@ export default function CardCarousel() {
 
       {/* Bottom indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2">
-        {destinations.map((_, index) => (
+        {projects.map((_, index) => (
           <motion.button
             key={index}
             className={`h-2 rounded-full transition-all duration-300 ${
