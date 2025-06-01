@@ -1,11 +1,11 @@
 'use client';
 import { useEffect } from 'react';
 import Lenis from 'lenis'
-import HeroSection from '@/components/HeroSection';
+import HeroSection from '@/sections/HeroSection';
 // import Description from '@/components/Description';
 import localFont from 'next/font/local';
-import About from '@/components/About';
-import Projects from '@/components/Projects';
+import About from '@/sections/About';
+import Projects from '@/sections/Projects';
 const NeueMontreal = localFont({
   src: [
     { path: "../../public/fonts/NeueMontreal-Regular.otf", weight: "400", style: "normal" },

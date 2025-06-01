@@ -1,6 +1,8 @@
 import AnimatedBody from "@/animations/AnimatedBody";
 import AnimatedTitle from "@/animations/AnimatedTitle";
-import ProjectCardBlack from "@/app/components/ui/ProjectcardBlack";
+import CardCarousel from "@/components/card-carousel";
+import { projects, ProjectProps } from "@/components/projectDetails";
+import ProjectCardBlack from "@/components/ui/ProjectcardBlack";
 import { LanyardCard } from "@/Lanyard/lanyard";
 
 const Projects = () => {
@@ -30,10 +32,25 @@ const Projects = () => {
                     charSpace={"mr-[0.001em]"}
                 />
 
-                <div className="flex w-[100%] flex-col lg:flex-row lg:gap-20">
-                    <ProjectCardBlack
+                <div className="flex w-[100%] flex-col lg:gap-20">
+                    {/* <ProjectCardBlack
                     ProjectCardContent={ProjectCardContentBlack}
+                    /> */}
+                  {projects.map((project: ProjectProps) => (
+                    <ProjectCardBlack
+                        id={project.id}
+                        key={project.id}
+                        name={project.name}
+                        description={project.description}
+                        technologies={project.technologies}
+                        techNames={project.techNames}
+                        techLinks={project.techLinks}
+                        github={project.github}
+                        demo={project.demo}
+                        image={project.image}
+                        available={project.available}
                     />
+                ))}
                 </div>
             </div>
             {/* <LanyardCard
