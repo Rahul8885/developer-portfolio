@@ -147,7 +147,7 @@ export default function CardCarousel() {
                     }}
                   >
                     <motion.div
-                      className="relative w-[60vw] h-[60vh] rounded-2xl overflow-hidden shadow-2xl"
+                      className="relative w-[50vw] h-[90vh] rounded-2xl overflow-hidden shadow-2xl"
                       whileHover={isCenter ? { y: -10 } : {}}
                       transition={{ duration: 0.3 }}
                     >
@@ -160,7 +160,7 @@ export default function CardCarousel() {
                       />
 
                       {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-slate-300" />
 
                       {/* Content overlay - only show on center slide */}
                       <AnimatePresence>
