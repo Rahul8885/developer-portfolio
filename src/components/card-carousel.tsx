@@ -71,8 +71,9 @@ export default function CardCarousel() {
     const isRight = position > 0
 
     return {
-      x: position * 320, // Consistent gap of 320px between cards
-      rotateY: isCenter ? 0 : position * -25, // More pronounced tilt for non-focused cards
+      x: position * 180, // Consistent gap of 320px between cards
+      rotateY: isCenter ? 0 : position * -30, // More pronounced tilt for non-focused cards
+   
       scale: isCenter ? 1 : 0.85,
       z: isCenter ? 0 : -100,
       opacity: Math.abs(position) <= 2 ? (isCenter ? 1 : 0.7) : 0,
@@ -111,7 +112,7 @@ export default function CardCarousel() {
           </motion.div> */}
 
           {/* Slides */}
-          <div className="relative h-[500px] flex items-center justify-center">
+          <div className="relative h-[70vh] flex items-center justify-center">
             <AnimatePresence mode="wait">
               {projects.map((project, index) => {
                 const position = getSlidePosition(index)
@@ -147,7 +148,7 @@ export default function CardCarousel() {
                     }}
                   >
                     <motion.div
-                      className="relative w-[50vw] h-[90vh] rounded-2xl overflow-hidden shadow-2xl"
+                      className="relative w-[40vw] h-[60vh] rounded-2xl overflow-hidden shadow-2xl"
                       whileHover={isCenter ? { y: -10 } : {}}
                       transition={{ duration: 0.3 }}
                     >
