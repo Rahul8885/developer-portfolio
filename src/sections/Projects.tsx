@@ -26,10 +26,10 @@ const Projects = () => {
                 <AnimatedTitle
                     text={"My Work"}
                     className={
-                        "mb-10 text-left  text-[40px] font-bold leading-[0.9em] text-[#e4ded7] sm:text-[45px] md:mb-16 md:text-[60px] lg:text-[80px]"
+                        "mb-10 tracking-tighter text-left font-neue  text-[40px] font-bold leading-[0.9em] text-[#e4ded7] sm:text-[45px] md:mb-16 md:text-[60px] lg:text-[80px]"
                     }
                     wordSpace={"mr-[14px]"}
-                    charSpace={"mr-[0.001em]"}
+                     charSpace={"mr-[0.03em]"}
                 />
 
                 <div className="flex w-[100%] flex-col lg:gap-20">
