@@ -42,17 +42,17 @@ export default function HeroSection() {
       {/* Text Content */}
       <motion.div
         style={{ y: LayerText }}
-        className="absolute z-[40] top-32 md:top-36 w-[90%] lg:w-[55%] left-4 md:left-20  tracking-tighter leading-[1em]"
+        className="absolute z-[40] top-32 md:top-36 w-[90%] lg:w-[55%] left-4 md:left-20  -tracking-tight leading-[1em]"
       >
        
-        <h1 className="lg:text-[72px] md:text-[60px] text-[36px] font-bold leading-[1em] tracking-tighter text-accentblue">
+        <h1 className="lg:text-[72px] md:text-[60px] text-[36px] font-bold font-neue leading-[1em] tracking-tight text-accentblue">
           Hi I'm Rahul Akubattini
         </h1>
        
-        <h1 className="lg:text-[72px] md:text-[60px] text-[36px] font-bold leading-[1em] tracking-tighter  text-accentblue">
+        <h1 className="lg:text-[72px] md:text-[60px] text-[36px] font-bold font-neue leading-[1em] tracking-tight text-accentblue">
           a 
           <span>
-            <FlipWords className='pl-5 text-darkblue' words={["Full Stack Developer", "Web Designer", "App Developer", "AWS Developer"]}/>
+            <FlipWords className='pl-5 font-neue text-darkblue' words={["Full Stack Developer", "Web Designer", "App Developer", "AWS Developer"]}/>
           </span>
         </h1>
         
