@@ -112,7 +112,7 @@ export default function CardCarousel() {
           </motion.div> */}
 
           {/* Slides */}
-          <div className="relative h-[70vh] flex items-center justify-center">
+          <div className="relative h-[60vh] flex items-center justify-center">
             <AnimatePresence mode="wait">
               {projects.map((project, index) => {
                 const position = getSlidePosition(index)
@@ -145,10 +145,12 @@ export default function CardCarousel() {
                     onClick={() => setCurrentIndex(index)}
                     style={{
                       transformStyle: "preserve-3d",
+                    
+                     transformPerspective: "1200px",
                     }}
                   >
                     <motion.div
-                      className="relative w-[40vw] h-[60vh] rounded-2xl overflow-hidden shadow-2xl"
+                      className="relative w-[30vw] h-[50vh] rounded-2xl overflow-hidden shadow-2xl"
                       whileHover={isCenter ? { y: -10 } : {}}
                       transition={{ duration: 0.3 }}
                     >
