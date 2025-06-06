@@ -19,7 +19,7 @@ const Projects = () => {
 ]
     return (
         <section
-            className="relative  z-10 w-full overflow-hidden bg-[#0E1016] bg-cover bg-center pt-16 pb-36 md:pt-20 md:pb-44 lg:pt-20 lg:pb-56"
+            className="relative h-screen z-10 w-full overflow-hidden bg-[#0E1016] bg-cover bg-center pt-16 pb-36 md:pt-20 md:pb-44 lg:pt-20 lg:pb-56"
             id="about"
         >
             <div className=" flex items-center flex-col place-content-center">

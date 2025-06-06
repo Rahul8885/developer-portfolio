@@ -150,7 +150,7 @@ export default function CardCarousel() {
                     }}
                   >
                     <motion.div
-                      className="relative w-[30vw] h-[50vh] rounded-2xl overflow-hidden shadow-2xl"
+                      className="relative w-[400px] h-[500px] rounded-2xl overflow-hidden shadow-2xl"
                       whileHover={isCenter ? { y: -10 } : {}}
                       transition={{ duration: 0.3 }}
                     >

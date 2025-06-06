@@ -5,7 +5,7 @@ import { LanyardCard } from "@/Lanyard/lanyard";
 const About = () => {
     return (
         <section
-            className="relative z-10 w-full overflow-hidden bg-[#0E1016] bg-cover bg-center pt-16 md:pt-20 md:pb-44 lg:pt-20 lg:pb-56"
+            className="relative z-10 h-screen w-full overflow-hidden bg-[#0E1016] bg-cover bg-center pt-16 md:pt-20 md:pb-44 lg:pt-20 lg:pb-56"
             id="about"
         >
             <div className="mx-auto flex flex-col pl-10 pr-5 md:pl-20">
@@ -19,7 +19,7 @@ const About = () => {
                 />
 
                 <div className="flex w-[100%] flex-col lg:flex-row lg:gap-20">
-                    <div className="mb-10 flex w-[100%] flex-col gap-4 text-[12px] font-medium  leading-relaxed tracking-wide text-[#e4ded7] md:mb-16 md:gap-6 md:text-[20px] md:leading-relaxed lg:mb-16  lg:max-w-[90%] lg:text-[24px] ">
+                    <div className="mb-10 flex w-[100%] flex-col gap-4 text-[20px] font-medium  leading-relaxed tracking-wide text-[#e4ded7] md:mb-16 md:gap-6 md:text-[24px] md:leading-relaxed lg:mb-16  lg:max-w-[90%] lg:text-[24px] ">
                         <AnimatedBody className="font-neue" text="I’m a Full Stack Developer with over 2 years of experience in building high-performance web and mobile applications. I specialize in React.js, React Native, Node.js, and AWS Cloud, with expertise in serverless architectures, API integrations, and infrastructure automation." />
 
                         <AnimatedBody
