@@ -81,6 +81,7 @@ export default function CardCarousel() {
   }
 
   return (
+    <>
     <div className="relative w-full overflow-hidden">
       {/* Background blur effect */}
      
@@ -112,7 +113,7 @@ export default function CardCarousel() {
           </motion.div> */}
 
           {/* Slides */}
-          <div className="relative h-[60vh] flex items-center justify-center">
+          <div className="relative h-[65vh] flex items-center justify-center">
             <AnimatePresence mode="wait">
               {projects.map((project, index) => {
                 const position = getSlidePosition(index)
@@ -150,7 +151,7 @@ export default function CardCarousel() {
                     }}
                   >
                     <motion.div
-                      className="relative w-[400px] h-[500px] rounded-2xl overflow-hidden shadow-2xl"
+                      className="relative w-[670px] h-[480px] border-2 border-yellow bg-darkblue rounded-2xl overflow-hidden shadow-2xl"
                       whileHover={isCenter ? { y: -10 } : {}}
                       transition={{ duration: 0.3 }}
                     >
@@ -163,7 +164,7 @@ export default function CardCarousel() {
                       />
 
                       {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-slate-300" />
+                      {/* <div className="absolute inset-0 bg-slate-300" /> */}
 
                       {/* Content overlay - only show on center slide */}
                       <AnimatePresence>
@@ -224,12 +225,14 @@ export default function CardCarousel() {
       </div>
 
       {/* Bottom indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2">
+    
+    </div>
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex space-x-2">
         {projects.map((_, index) => (
           <motion.button
             key={index}
             className={`h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex ? "bg-white w-8" : "bg-white/40 hover:bg-white/60 w-2"
+              index === currentIndex ? "bg-yellow w-8" : "bg-white/40 hover:bg-white/60 w-2"
             }`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
@@ -237,6 +240,6 @@ export default function CardCarousel() {
           />
         ))}
       </div>
-    </div>
+      </>
   )
 }

@@ -19,14 +19,14 @@ const Projects = () => {
 ]
     return (
         <section
-            className="relative h-screen z-10 w-full overflow-hidden bg-[#0E1016] bg-cover bg-center pt-16 pb-36 md:pt-20 md:pb-44 lg:pt-20 lg:pb-56"
+            className="relative h-screen z-10 w-full overflow-hidden bg-[#0E1016] bg-cover bg-center pt-16 pb-8 md:pt-20 md:pb-8 lg:pt-20 lg:pb-8"
             id="projects"
         >
             <div className=" flex items-center flex-col place-content-center">
                 <AnimatedTitle
                     text={"My Work"}
                     className={
-                        "mb-10 tracking-tighter text-left font-neue  text-[40px] font-bold leading-[0.9em] text-[#e4ded7] sm:text-[45px] md:mb-16 md:text-[60px] lg:text-[80px]"
+                        "mb-10 tracking-tighter text-left font-neue  text-[40px] font-bold leading-[0.9em] text-[#e4ded7] sm:text-[45px]  md:text-[60px] lg:text-[80px]"
                     }
                     wordSpace={"mr-[14px]"}
                      charSpace={"mr-[0.03em]"}
