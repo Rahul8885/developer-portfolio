@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { projects } from "./projectDetails"
+import ProjectCardBlack from "./ui/ProjectcardBlack"
 
 // const projects = [
 //   {
@@ -150,7 +151,7 @@ export default function CardCarousel() {
                     }}
                   >
                     <motion.div
-                      className="relative w-[400px] h-[500px] rounded-2xl overflow-hidden shadow-2xl"
+                       className="relative w-[760px] h-[600px] rounded-2xl overflow-hidden shadow-2xl"
                       whileHover={isCenter ? { y: -10 } : {}}
                       transition={{ duration: 0.3 }}
                     >
@@ -163,7 +164,7 @@ export default function CardCarousel() {
                       />
 
                       {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-slate-300" />
+                      {/* <div className="absolute inset-0 bg-slate-300" /> */}
 
                       {/* Content overlay - only show on center slide */}
                       <AnimatePresence>
@@ -175,7 +176,7 @@ export default function CardCarousel() {
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                           >
-                            <div className="space-y-4">
+                            {/* <div className="space-y-4">
                               <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -187,7 +188,7 @@ export default function CardCarousel() {
                                 )}
                               </motion.div>
 
-                              {/* Decorative line */}
+                            
                               <motion.div
                                 className="w-16 h-0.5 bg-white mx-auto"
                                 initial={{ width: 0 }}
@@ -205,14 +206,43 @@ export default function CardCarousel() {
                                   {project.description}
                                 </motion.p>
                               )}
-                            </div>
+                            </div> */}
+                            <ProjectCardBlack
+                        id={project.id}
+                        key={project.id}
+                        name={project.name}
+                        description={project.description}
+                        technologies={project.technologies}
+                        techNames={project.techNames}
+                        techLinks={project.techLinks}
+                        github={project.github}
+                        demo={project.demo}
+                        image={project.image}
+                        available={project.available}
+                    />
                           </motion.div>
                         )}
                       </AnimatePresence>
 
                       {/* Card reflection effect for non-center cards */}
                       {!isCenter && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-30" />
+                  
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-30" >
+                         <ProjectCardBlack
+                        id={project.id}
+                        key={project.id}
+                        name={""}
+                        description={""}
+                        technologies={[]}
+                        techNames={[]}
+                        techLinks={[]}
+                        github={''}
+                        demo={project.demo}
+                        image={project.image}
+                        available={project.available}
+                    />
+                    </div>
+                 
                       )}
                     </motion.div>
                   </motion.div>
